@@ -6,16 +6,28 @@ using namespace std;
 float * read_file(string filename, int *n_points);
 float add_values(float *x, int n_points);
 
+
 int main(){
   float *x=NULL;
   float *y=NULL;
   int n_x=0;
   int n_y=0;
-
+  float total=0;
+  float *multiplicacion =NULL;
+    
   x = read_file("valores_x.txt", &n_x);
   y = read_file("valores_y.txt", &n_y);
-  
+  multiplicacion = new float[20];
   cout << add_values(x, n_x) << " " << add_values(y, n_y) << endl;
+    
+    for(int i=0; i< 20 ;i++)	{
+        
+			multiplicacion[i]=x[i]*y[i];
+			total = multiplicacion[i];
+	}
+ 
+	cout<<endl;
+	cout<<" producto"<<total<<endl;
   
   return 0;
 }
@@ -63,3 +75,4 @@ float add_values(float *x, int n_points){
   }
   return a;
 }
+
