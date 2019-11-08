@@ -4,7 +4,7 @@
 using namespace std; 
 
 float * read_file(string filename, int *n_points);
-float add_values(float *x, int n_points);
+float add_values(float *x, int n_points, float *y);
 
 
 int main(){
@@ -17,18 +17,9 @@ int main(){
     
   x = read_file("valores_x.txt", &n_x);
   y = read_file("valores_y.txt", &n_y);
-  multiplicacion = new float[20];
-  cout << add_values(x, n_x) << " " << add_values(y, n_y) << endl;
+
+  add_values(x, n_x, y);
     
-    for(int i=0; i< 20 ;i++)	{
-        
-			multiplicacion[i]=x[i]*y[i];
-			total = multiplicacion[i];
-	}
- 
-	cout<<endl;
-	cout<<" producto"<<total<<endl;
-  
   return 0;
 }
 
@@ -66,13 +57,15 @@ float * read_file(string filename, int *n_points){
   return array;
 }
 
-float add_values(float *x, int n_points){
-  float a=0;
+float add_values(float *x, int n_points, float *y){
+  float a;
   int i;
   
   for(i=0;i<n_points;i++){
-    a += x[i];
+    a = *(x+i) * *(y+i);
+    cout << "la matriz multiplicacion" << a << endl;
   }
+   
   return a;
 }
 
